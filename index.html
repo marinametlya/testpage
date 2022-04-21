@@ -3,21 +3,28 @@
 
 </head>
 <body>
-
+<input type="text" id="latlng" value="wait..."/>
+  
 <script>
-
-alert('ok');
-
+var options = {
+  enableHighAccuracy: true,
+  timeout: 10000,
+  maximumAge: 0
+};
+  
 window.navigator.geolocation.getCurrentPosition(function(position) {
   var lat = position.coords.latitude;
   var lng = position.coords.longitude;
-  alert(lat + " - " + lng);
-});
-
-
+  document.getElementById("latlng").value = lat + " - " + lng;
+},
+function(err) {
+  alert('no data:' + err.message);
+},
+options
+);
 </script>
 
 
-OKAY
+
 </body>
 </html>
